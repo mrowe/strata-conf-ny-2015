@@ -1,0 +1,448 @@
+<2015-09-29 Tue>
+
+* Data 101
+
+** Paco Nathan
+
+Story arc - for mostly "business" audience. What does the data landscape look like? Reports from the field
+
+- Marie Beaugureau
+- Tim Berglund (DataStax)
+- Edd Dumbill (Silicon Valley Data Science)
+
+- Matthew Gee
+- Katie Kent (Galvanize) @k80kent
+- Yael Garten
+
+** Tim
+
+Distributed Systems in One Lesson.
+
+What is a distributed system?
+
+- operate concurrently
+- Fail independently
+- do not share a global clock
+
+CAP theorem
+
+Distributed computation
+
+Spark (vs hadoop/mapreduce)
+
+- scatter/gather - move to computation to the data
+- more general programming model than hadoop/MR
+- storage agnostic
+
+Storm
+
+- streaming model - data sources: spouts
+
+Lambda Architecture
+
+Kafka - distributed messaging system
+
+- topic partitioning
+- ordering not guaranteed
+
+Three topics
+
+- storage
+- computation
+- messaging
+
+** Edd - Silicon Valley Data Science
+
+The business case for hot new technologies
+
+Big Data - it's really about business agility
+
+Buying agility - linear scale-out cost, opex vs capex
+
+Development agility
+
+- schema on read
+- rapid deployment
+- fun to program - do more in less code
+
+Data platform
+
+- we're not there yet
+
+Spark
+
+- in-memory distributed computing
+- speaks SQL
+- developer-friendly: scala, R, python, java
+
+Spark - probably the most important platform/framework right now
+
+(Big data: volume, variety, velocity)
+
+Kafka
+
+- fault tolerant messaging
+
+Kafka use cases:
+
+- stream processing
+- log aggregation
+- decoupled event architectures
+
+Docker!
+
+What are "Notebooks"?
+
+- interactive documents that contain a program and its output
+- cf Mathematica
+- Jupyter
+- Apache Zeppelin - https://zeppelin.incubator.apache.org
+
+Benefits of Notebooks
+
+- easy collaboration
+- building blocks for self-service analytical capability
+
+Understanding your data and being able to move fast is your key offensive capability
+
+** Matthew Gee
+
+Demystifying machine learning
+
+Gartner "hype curve": we're at the top of the "inflated expectations" peak!
+
+"Generalising from examples" - Pedro Domingos
+
+It's a human process
+
+- identify target action
+- define the critical question
+- understand available data
+- select appropriate methods
+- decide on evaluation metrics
+
+aiding human action - what you do as a result is what makes modelling worthwhile
+
+Common ML tasks:
+
+- prediction
+- description
+- detection
+
+Labels and features
+
+- labels => supervised learning
+- feature engineering - 70-80% of your work
+
+Most of "data science" is understanding and cleaning data
+
+Know your domain's data
+
+Is deep learning for me? when individual units aren't informative, but aggregations are
+
+ - scikit-learn algorithm cheat sheet
+
+   It's a pity Matt didn't time his talk about a bit better... and
+   end up having to skip the last 30% of slides and content :-/
+
+** Katie Kent
+
+Building a data science team
+
+Perfect storm:
+
+- storage is cheap
+- data is valuable
+
+Real data scientists are rare (combination of stats, comp sci and domain knowledge)
+
+Data science skills map
+
+ * translation
+   * visualisation
+   * communication
+   * evangelism
+ * product
+   * product analytics
+   * feature prototyping
+ * complex analysis
+   * feature prototyping
+   * process optimisation
+ * software engineering
+   * machine learning
+   * data engineering - taking prototypes to production
+
+The skills required depend on the desired outcome
+
+ * business insights? translation/product
+ * deliver prototypes? product/analysis
+ * deliver products? analysis/engineering
+
+At scale, each of these is an entire data science team
+
+Twitter has: insights team, product data science team, data engineering team
+
+T-shaped skill set - understand the whole picture, but have a deep specialisation in one area (could become team lead of a specific specialisation)
+
+What great data scientists want:
+
+ * interesting data
+
+  - Don't have much/interesting data? make it someone's job to go and get interesting data!
+
+  - Inaccessible data? Fix infrastructure - hire a data engineer!
+
+ * great team
+
+  - Sell the team! talk at conferences, write blogs, etc.
+
+ * opportunity to make an impact
+
+Where do data scientists hang out?
+ * Data Science meetups
+ * datatau.com
+ * conferences: kdnuggets.com/meetings
+ * hackathons
+ * blogs
+   * airbnb nerds
+   * stitchfix
+   * netflix
+ * kaggle, etc.
+
+"How to conssitently hire remarkable data scientists" - firstround.com
+
+*** DONE Get Katie's slides! (katie@galanise.com)
+CLOSED: [2015-10-02 Fri 12:25]
+http://strataconf.com/big-data-conference-ny-2015/public/schedule/proceedings
+
+** Yael Garten (LinkedIn)
+
+How to use your data science team: becoming a data-driven organisation
+
+ * consciously map how you use data in each phase of product lifecycle
+ * treat data as a first class citizen
+ * create a culture where it's expected decisions are driven by data
+
+ * tools:
+   * foundations: governed data sets
+     ... slides?
+   * ...
+   * data tracking bugs as launch blocker - data as a 1st class citizen - you have to be producing agreed data in the agreed format
+   * joint definition of data requirements/contracts by produces and consumers
+     * Data Model Review Committee
+   * data quality monitoring tool to ensure contract is met
+
+*** DONE slides: culture, process, tools for each phase of product development?
+CLOSED: [2015-10-02 Fri 12:25]
+
+* Architecting a Data Platform
+
+Silicon Valley Data Science
+http://www.svds.com/strata-hadoop-world-ny-2015/
+
+John Akred - CTO
+Stephen O'Sullivan - VP of Engineering
+Gary Dusbabek - principal developer?
+
+ * Prioritise for highest business value
+ * design with outcomes in mind (e.g. don't build real time if you don't need it)
+ * deliver initial results quickly, then adapt and interate
+
+Agenda:
+ * acquire/ingest
+ * persistence
+ * analytics
+ * data services
+ * extensibiilty
+
+** Overview - John Akred
+
+Conventional data strategy - what you do *to* data: clean, validate, contrl, protect
+
+Modern data strategy - what you do _with_ data: attract new customers, taget vip customers, autmate
+
+Data value chain - draw value from your strategic data assets:
+ * discover
+ * ingest
+ * process
+ * persist
+ * integrate
+ * analyse
+ * expose
+
+You architecture places friction at each of these steps.
+
+As you scale up a traditional data architecture, cost per user can go up. (e.g. oracle -> RAC)
+
+Define your roadmap... but it shouldn't be a rigid path that you cannot deviate from
+
+Data architecture should be a living thing, not cast in stone
+
+Plan -> Prototype -> Pilot -> Production
+
+Define success (of pilot, prodcuction) in business terms, not technical (revenue, time to market, cost avoidance, brand beneit, etc.)
+
+See also: data strategy session http://strataconf.com/big-data-conference-ny-2015/public/schedule/detail/43116
+
+** Tour of technical components - Stephen O'Sullivan
+*** Acquire & Ingest
+Push vs pull
+
+Push: log data, IoT data, clickstream
+Pull: import, call APIs
+
+Stream vs bactch
+
+Stream: IoT, clickstream, API calls
+Batch: log data, table imports
+
+What else to consider?
+
+ - complexity of logic
+ - frequency and size
+ - ordering in a distributed queue
+ - durability, time to live for playback
+ - acknowledgement
+ - decorate the data while streaming
+
+Acquire from internal sources:
+ - operational database
+ - data warehouse
+ - events/clickstreams
+ - logs
+
+Acquire from external sources:
+ - unstructured data
+ - IoT
+ - data APIs (e.g. data.gov, twitter, ...)
+
+Ingest: offline processing
+
+Workflow management: oozie http://oozie.apache.org, flume https://flume.apache.org
+
+Real time processing: kafka, spark streaming
+
+Storm - event based
+Spark - micro-batch
+
+*** Persistence
+
+"Polyglot storage"
+
+Different types of storage: graph, document, key-value, columnar
+
+It's ok to use more than one (e.g. cassandra for operational, hadoop for data science)
+
+Hadoop stack with spark (diagram in slides)
+Cassandra with spark
+
+Hadoop ecosystem:
+HDFS partition strategy? Storage format?
+
+Tachyon - in memory filesystem (caching layer) for hadoop
+
+Solr - indexim documents, faceting
+
+Which data store to choose depends on data type (specialised, general)
+
+"Schema on read"
+
+** John - Analytics
+
+Puts unique demands on architecture
+ - privileged access
+ - inefficient to make copies of All the Data
+
+Batch and interactive
+
+ - text analysis, NLP
+ - time series forecasting
+ - segementation, categorisation, recommendation
+ - optimisation
+ - graph analysis
+  - understand a set of transaction in the context of a social graph -
+    a problem that comes up all over the place
+ - prediction
+
+Agile is ok but "you can't decide how you're going to breathe in space
+when you get there. you need to have a plan."
+
+Be careful productionising analytics: you've evaluated your models and algorithms, but have you tested with production data and workloads?
+
+Netezza - push analytics into hardware! Let's you put code in FPGAs in the database hardware. :-O Lots of $$$ but can do amazing things.
+
+Develop analytics in batch mode, deploy against real time streams (or at least micro-batch)
+
+Choice of technology/architecture influences how easy it's going to be to take a product from exploratory/development into scaled up production
+
+Technology considerations:
+ - development
+   - training freq
+   - training latency
+   - algorithm type
+   - data architecture (pre-processing, joins, DW vs lake)
+ - production
+   - scoring latency
+   - scoring granularity
+   - scoring approach (batch, real time, hybrid)
+   - update frequency
+
+Spark supports developing in batch mode, deploying in streaming
+
+"How do I find the data?"
+
+** Gary - Data services
+
+Trend towards exposing data as a set of microservices
+
+Getting your data services layer rigth means you can isolate your consumers from the "duct tape and bailing wire" of your actual data analytics and processing systems.
+
+"SOA-driven design enables Platforms" - Steve Yegge
+
+Data services - exposing data to applications with microservices
+ - developers don't worry how data is stored
+ - change the data store without affecting the app
+ - all data is exposed the same way (what does this mean??)
+ - data resiliency (eh??)
+
+Services should focus on capability, not technology
+
+Microservices are differnt:
+ - different stress points: teams (culture), technology (deployment tools, etc.)
+ - processes: more moving pieces, decentralisation
+
+Cultural concerns for microservices:
+ - trust decisions
+ - exploit parallelism
+ - maintain focus
+Technical considerations:
+ - CI
+ - deployment processes/tools
+Metrics:
+ - dashboard for observability
+ - instrumentation: measurement, insight, action
+
+Building data services
+ - decomposition
+ - migration from monoliths
+
+   This is really about microservices not data... but I guess it's a
+   reasonable way to think about how your apps access your data? It
+   would be nice if microservices were actually _services_ though, not
+   just a data access layer...
+
+Summary:
+ - data services are a window on your data
+ - microservices are the building blocks of platforms
+ - faster iteration cycles
+ - require organisational preparation
+
+** Extensibility - Stephen
+
+YARN alone isn't the full answer
+
+  - what's YARN? http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html
+
+Also pepperdata - http://pepperdata.com
+
+https://github.com/silicon-valley-data-science/stratany-2015

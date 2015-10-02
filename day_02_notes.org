@@ -1,0 +1,331 @@
+<2015-09-30 Wed>
+
+* Keynotes
+
+** The next generation - Mike Olson (Cloudera)
+Mostly just a sales pitch for Cloudera as far as I could tell. I think they announced a new product, which may or may not be open source?
+
+** Playing with, and for, data - AnnMarie Thomas (School of Engineering and Schulze School of Entrepreneurship, University of St. Thomas)
+
+I think she just wants us to think differently about engineering projects.
+
+** What 0-50 million users in 7 days can teach us about big data - Joseph Sirosh (Microsoft)
+
+Talking about how-old.net.
+
+"The web can turn a little data problem into a big data problem very quickly."
+
+Tips:
+ * Use the cloud!
+ * elasticity
+ * real time monitoring is not optional
+ * experimenting is the new "normal"
+
+** Improving Medical Decision Making with Predictive Analytics on Big Data - Ron Kasabian (Intel), Michael Draugelis (Penn Medicine)
+
+Intel - Trusted Analytics Platform
+
+Building a data model for deep insights into physiology/health data.
+
+TAP - accelerates Advanced Analytics on Big Data
+
+** The race to modernize BI: What it is and why so urgent? - Tim Howes (ClearStory Data)
+
+Couldn't really make any sense of this one at all. Product pitch I guess.
+
+** A Transition to Interactive Music Consumption + Data - Joy Johnson (AudioCommon)
+
+"interactive music listening"
+
+Create your own mix, talk to musicians, blah blah
+
+** Data vs creativity: The last battleground? - David Boyle (BBC Worldwide)
+
+You _can_ introduce "big data" ideas to the creative (music, publishing) world.
+
+People make decisions, not algorithms.
+
+Data science should support and inform decisions.
+
+** Unleashing the power of big data today - Jim McHugh (Cisco)
+
+Le Tour de France! Di-data tracking!
+
+"Data at the edge"
+
+** On reflection: What the White House needs from you - DJ Patil (White House Office of Science and Technology Policy)
+
+"unleash the power of data for all Americans"
+
+Open data - health care, criminal and social justice, data talent (hiring/training)
+
+data.gov
+
+Modern day first responder in emergencies are... data scientists
+
+"Hack Housing" - with zillo
+
+Data is changing the way policy is made.
+
+Announced new programme: addressing child slavery and forced labour #EndChildLabor
+
+Data Ethics - we, the data science community, must own this problem
+
+** Improving decisions - Katherine Milkman (Wharton School at the University of Pennsylvania)
+
+"Temptation bundling" e.g. only read trashy novels while working out at the gym. Erm.
+
+"Choice architecture"
+
+** O'Reilly Announcements - Ben Lorica (O'Reilly Media)
+
+A couple of free reports, including "data in sports"
+
+** Context Computing Jeff Jonas (IBM)
+
+Observations are much more useful with context. But doesn't have to be complete or perfect.
+
+Context accumulates
+Helps focus attention (asteroid story)
+
+* Transitioning from reactive to proactive: Etsy's data platform team - Melissa Santos
+
+This seems kind of pointless. "How we upgraded some java libraries" is all I could get from it. Moving on... but the other interesting sessions are full already. *sigh* Hopefully I'll have more luck after lunch.
+
+* Kinesis Deep dive - Roy Ben-Alta (Amazon Web Services)
+
+(second choice, first was full :-/)
+
+Customer scenarios:
+ - accelerated ETL
+ - continous metrics/KPI extraction
+ - responsive data analysis
+
+Example use cases:
+
+  real time data ingested by kinesis, analysed in redshift (tableau)
+
+  mobile app -> kinesis -> lambda -> dynamodb & redshift
+    ( and dynamodb -> lambda -> downstream apps)
+
+Kinesis: managed service, streaming,
+
+data (messages) retained for 24 hours (can be replayed in that time)
+
+up to 1MB
+
+log4j kinesis appender
+
+Partition key strategy: messages are unordered across shards. if
+ordering is important control the partition key (or do it yourself
+with a global sequence number).
+
+github.com/awslabs - kinesis scaling utils
+
+Amazon Kinesis Client Library (KCL) - open source, deploy on ec2, process records
+
+Amazon Kinesis Connector Library - build your own pipeline (S3, redshift, dynamo)
+
+Lambda access to kinesis stream via IAM roles
+
+EMR now has spark 1.5
+
+* How a global entertainment company successfully built a data lake for continued digital dominance - Joe Caserta (Caserta Concepts), Elliott Cordo (Caserta Concepts, LLC)
+
+    This was a good one. I like these guys, smart, said sensible things
+
+Caserta - consulting on "big data strategy" - Warner Music Group?
+
+Music industry turned on its head in the last 10-15 years
+
+Record companies are now technology companies
+
+... and now, streaming is taking over. Industry has flipped from
+touring to drive record sales to streaming to drive concert sales.
+
+old approach: "unstructured data? forklift it into hadoop!"
+
+now we need to think about how we structure data
+
+-> build a dynamic platform!
+
+from structure -> ingest -> analyse
+to ingest -> analyse -> structure
+
+recipe: cloud, data lake, polyglot warehouse
+
+"never ssh into servers" Nice!
+
+Everything captured to S3, processed to cassandra
+
+Built a framework to spin up an EMR cluster to process a job, then kill it. processing engine picked on demand. programmatically estimate instance type and cluster size.
+
+did need _some_ persistant servers (about a couple of dozen), for cassandra and redshift.
+
+What is a data lake?
+ - scalable storage (S3)
+ - pluggable processing (EMR)
+ - remove barriers from ingestion and analysis
+ - storage and processing for all data
+ - tunable governance
+
+** TODO "Big Data Pyramid" (see slide)
+
+  landing area -> data lake -> analysis workspace -> big data warehouse
+
+incoming - lightweight wrapper API around S3 (and web front end)
+
+avoid custom development.. but not completely
+
+HAMBOT - data quality checks, domain model checks - soon to be open sourced
+
+Think "data ecosystem" not "tech stacks"
+
+"just in time governance"
+
+ @casertaconcepts.com
+
+* Data Science in the Wall Street Journal - Juan Huerta (Dow Jones)
+
+Head of Data Science
+
+Lots of challenges facing the news industry (digital, ad blockers, free news sources)
+
+On the upside, we can get much closer to our readers now
+
+data science - identifying opportunities
+
+"Customer knowledge engine" - central store with an API. a data processing pipeline feeds it from raw customer data
+
+deep survey data -> core segments of customers
+
+matched this to raw customer data, then used it to train a classification engine
+
+then took this to prod as a pipeline to get customer id -> segment id
+
+then a/b testing of recommendations based on segmentation
+
+predicted churn
+
+
+    So this is mostly about the interesting analyses they did, rather than the tech/architecture used to do it.
+
+reusable pipeline - other News Corp properties, open source?
+
+Created tools for the newsroom that help journalists and editors gain real time information on audiences and news access patters
+
+page view patterns tell you a lot about the story
+
+Addressing volume and velocity:
+  - billions of events every few weeks in pipelines
+  - millions of events per second, update the model in milliseconds, reformulate CKE as RT/streaming (kinesis/spark, hadoop/Google BigQueer)
+
+Team growing - data scientist x 6, data engineering x 7 + a few managers (~20 total)
+
+Google BigQuery - good when you have very wide data but only care about a few columns
+
+* Data liberation and data integration with Kafka - Martin Kleppmann
+
+built large scale data systems at LinkedIn. now writing an ORA book: dataintensive.net
+
+    I like this guy already: erudite nerd, complete with outrageous Oxbridge accent
+
+"Maslow's hierarchy" of data needs:
+
+ - vision/mission
+ - products
+ - data science (analysis/munging)
+ - data infrastructure
+ - data access
+
+cf. caserta's pyramid
+
+Getting access to data is still much harder than it should be:
+
+ - fragmenation (rdbms, nosql, log files, messages, indexes, monitoring
+
+Warehouses -> Hadoop/MR -> kafka/streaming
+
+ - drop relational
+ - programmability
+ - open source
+...
+ - batch -> real time
+ - daily -> continuous
+
+Kakfa - event streams: "somthing happened" -> subscribe to it
+
+"sort of like tail -f"
+
+could be log events, sensor readings, or... database change events
+
+immutable, point in time
+
+postgres change watcher: "bottled water" (open source)
+
+kafka streams as a central point of integration, standard interface, streams of data can be subscribed to by various downstream systems
+
+copycat (thu 13:15)
+
+standardise on ONE global data format (e.g. json)
+
+but.. json has a few problems:
+
+ - integer/floating point mess
+ - no support for binary strings
+ - verbose and slow
+
+There are alternatives!
+
+AVRO
+ - defined schema
+ - with inline documentation!
+ - schema evolution
+
+versioned schema registry
+
+messages can be serialised in a compact format, with a refernce back to the version of the schema in the registry, which means consumers and producers can be backwards *and* forwards compatible
+
+composability - stream processors that manipulate data as it is streamed
+
+"central hub for event streams"
+
+Slides?
+
+eBook discount: TS2015
+* Combining open source software and cloud-native data processing services on Google Cloud Platform Eric Brewer (Google)
+
+    Equal time for Those Other Guys ;-)
+
+VP Infrastructure
+
+It's an amazing time to write software:
+ - infinite resources in the cloud
+ - a sea of services - only build the bit you care about
+
+BigQuery - externalised version of dremel
+
+BigTable - based on internal version of bigtable
+ - but implements Apache Hbase API, since that's so well known
+
+"A shift: the open cloud" - now leading with open source instead of papers (and internal products)
+
+Cloud Dataproc - managed hadoop and spark
+
+Google Cloud web console has a button for every action that will show you the equivalent JSON API payload. Nice!
+
+Seems like they only charge for parts of hours? billed per minute
+
+"Manage the entire lifecycle of big data"
+
+Storage: bigquery (tables), bigtable (key-value), cloud store (files)
+
+Just the fun stuff! let google cloud take care of all the provisioning, sizing, etc. etc.
+
+    Not sure how they differentiate from AWS
+
+BigQuery - scales automatically from little data to big
+
+Cloud Dataflow - "make complex data analysis simple"
+ - data processing pipelines
+ - merges batch and stream proessing

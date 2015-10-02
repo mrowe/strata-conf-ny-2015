@@ -1,0 +1,290 @@
+<2015-10-01 Thu>
+
+* Keynotes
+
+Seemed much better today. Several quite thought provoking talks. Which is what keynotes should be of course.
+
+** Data science for mission - Doug Wolfe (CIA)
+Missed most of it. Seemed dry though
+
+** Privacy protection and reproducible research - Daniel Goroff (Alfred P. Sloan Foundation)
+
+Alfred P Sloan - built General Motors
+
+Base rate falacy
+
+Many data science "discoveries" are false. Reproduction solves many of the problems (by mashing the probabilities).
+
+New tools make reproducibility easier, even with private data.
+
+** The big data dividend - Jack Norris (MapR Technologies)
+
+AmEx make POS fraud decisions in 2 milliseconds
+
+MapR-DB - JSON documents in hadoop
+
+** The rise of the citizen data scientist - Ben Werther (Platfora)
+
+"4 out of 5 users are full stack" - up and down the data science stack from pipelines and transformation to modeling, "data science" analytics to visualisation.
+
+"Citizen Data Scientist" - may not be formally qualified, but able to work with data and get useful insights. Look for them in your organisation!
+
+Is data science a role? Or a career path?
+
+** Patterns from the future - Paul Kent (SAS)
+
+Hadoop's promises:
+ - spread data across many servers and keep it safe
+ - bring the work to the data
+
+YARN - data operating system (cluster resource management)
+
+** Doing it Wrong: 10 Problems with Qualitative Data - Farrah Bostic (The Difference Engine)
+
+Market resaerch - you're doing it wrong
+
+** IBM sponsored keynote - Shivakumar Vaithyanathan (IBM)
+
+Declarative machine learning
+
+SQL for machine learning!! github.com/SparkTC/systemml
+
+** What does it take to apply data science for social good? - Jake Porway (DataKind)
+
+Harnessing the power of data science in th service of humanity
+
+ - Find the problem is hard
+ - communication >> technology
+ - design with, not for
+
+Work on stuff that matters
+
+** Haunted by data - Maciej Ceglowski (Pinboard.in)
+
+Data has a life span that's longer than the institution that manages it
+
+"We are in the radium underpants stage"
+
+ - Don't collect data you don't need!
+ - Don't store what you collect
+ - Don't keep what you store forever
+
+** In praise of boredom - Maria Konnikova (The New Yorker | Mastermind)
+
+We've lost the knack of "just sitting and thinking".. and it's a big problem for how we think in general.
+
+cf Betrand Russell - "cut flowers in a vase",  "fruitful monotony"
+
+time to be "bored" -> insight
+
+"multitasking" - lose the ability to concetrate
+
+** Closing remarks - Roger Magoulas (O'Reilly Media), Doug Cutting (Cloudera), Alistair Croll (Solve For Interesting)
+
+6,300 people at the conference!
+
+* Big data at Netflix: Faster and easier Kurt Brown (Netflix)
+
+    Standing room only, so iphone notes...
+
+Hadoop with S3 not hdfs
+
+Suro/kafka streams all events to S3
+
+S3 as central "data warehouse"
+
+Cassandra as core data store
+
+- Fast, but no joins
+- Ship to S3
+
+Hadoop with Python analytics
+Hive for ad hoc analysis
+
+And... spark
+
+Presto:
+
+- Small tables in memory, stream big tables
+- Works in AWS
+- Open source
+- Java
+- Real world big data (came from Facebook)
+- Future (investment from Facebook, Netflix, ...)
+
+Java - great for applications at scale (or scala)
+
+Spark:
+
+Transitioning ETL to spark (from Pig)
+
+Why spark?
+
+- Cohesive environment (streaming, batch, ML, ...)
+- Multiple languages (python, Scala, Java, R)
+- Performance
+- Community
+- Future
+
+Down sides:
+
+- Immature
+- Running at scale - unproven
+- Multi-tenancy/concurrency
+- Tuning?
+- Scala?
+
+Stream processing: don't do it unless you really need it.
+
+Parquet
+
+Kafka
+
+- Simplify architecture
+- Durability
+- Community
+
+Genie
+
+Inviso - visualisation of jobs
+
+Metacat - federated metadata store
+
+Big Data Portal - may open source at some point
+
+Big Data API - "kragle"
+
+Culture: you can point anything you want in production... but you're on the hook for it.
+
+Also, periodic clean up.
+
+Provide paved paths (reduce the tendency of people to create their own wheels but people have the autonomy to "hack their way through the jungle" when necessary.
+
+"Question everything!"
+
+"Netflix culture deck" - read it!
+
+We don't store personal data (so we can make all the data available to everyone without fear).
+
+* Netflix: Integrating Spark at petabyte scale
+
+S3 as DW - separate storage from compute
+
+Deployment:
+
+- On Mesos where SLAs matter
+- On YARN for batch
+
+** TODO gah over flowing, stood in doorway for a bit but too uncomfortable... check out slides later
+
+* Copycat: Fault tolerant streaming data ingestion powered by Apache Kafka
+
+    Pretty dull. They use kakfa for data integration, with some connectors. Ok.
+
+* Data democratization versus data governance - Peter Guerra (Booz Allen Hamilton)
+
+    Lots of suits!
+
+Everybody's least favourite Hadoop topic - but one of the biggest concerns
+
+The push for governance:
+ - power/influence. "that's *my* data"
+ - legislation
+ - security teams saying "no"
+
+Democratisation:
+ - outside IT dept
+ - ingest 3rd party data
+ - used by non-technical users
+ - access to raw data
+ - data literacy
+ - access outside the enterprise?
+
+How?
+ - free your data!
+ - involve compliance/lawyers early
+ - start with a framework
+ - understand business challenges
+ - "fully implement accissibility and use of ALL data"
+ - allow for multiple taxonomys and schemas
+ - automated
+
+Five core capabilities:
+ - discovery - explore using metadata
+ - sharing - managed visibility
+ - reuse
+ - harmonisation
+ - translation
+
+Carnegie Mellon's Data Maturity Management Model
+
+Security policies have not kept up with "big data" technology
+
+Approach for the last 20 years has been based on contolled silos
+
+Apache Sentry, Ranger, Knox, Atlas - access control for Hadoop
+
+"Smart Data" - structured, verifiable representation of security tags bound to the data
+
+fine grained access control based on attributes/tags/labels
+* Ask me anything: Developing a modern enterprise data strategy - John Akred (Silicon Valley Data Science), Julie Steele (Silicon Valley Data Science), Scott Kurth (Silicon Valley Data Science)
+
+Don't make a tool choice until you are ready to use it
+
+Data warehouse is good for answering questions you've already asked, and answering them over and over again
+
+Building a data strategy is something you should do quickly. 4-8 week timeframe. Don't try to make it gold-plated
+
+Don't try to build the "perfect platform" up front. (it will just be another centralised data warehouse.)
+
+"What needle are you trying to move?"
+
+Individual business units with incentives to maximise local optimum, makes it hard to have a global strategy to maximise global optimum.
+
+> see talk on metadata and data management
+
+Trifecta - derive useful metadata from live data sources (but proprietary product?)
+* Science fiction to product: Data-driven development - Micha Gorelick (Fast Forward Labs)
+
+Using data to create new products and business opportunities http://micha.gd/
+
+"working with data is hard"
+
+ - unexpected things happen all the time
+ - unpredictable results from models
+ - can't predict the outcome until you try it - putting the science in data science
+ - plans and expectations are constantly changing
+ - not quite sure where the end point is
+
+Making a product? all the challenges level up! And there's no easy way to know what they are. And no clear "win" conditions.
+
+No way to know the answers, but you must know the questions.
+
+Step 1: the vision
+ - what super power can we give people?
+ - how do you know if it's useful?
+ - have you unintentionally done something evil?
+   how might bias in the data or models affect people?
+ - how do you know you've succeeded?
+
+Step 2: the research
+ - do we have the data?
+ - do we have the algorithms
+ - can we get reliable results - key part of the research
+ - are there simpler ways of winning?
+ - how will we deploy this thing?!
+
+Step 3: the retrospective
+ - is the data changing?
+ - are the needs changing?
+ - did we communicate the methods adequately
+
+ probabalistic data structures
+
+what is hard but possible vs what sounds easy but is impossible
+
+Awesome trends:
+ - natural language understanding (causal inference)
+ - transfer tasks
+ - graph algorithms - graph partitioning is unsolved
+ - q-learning - model-free decision making algorithm
