@@ -41,7 +41,7 @@ YARN - data operating system (cluster resource management)
 
 ** Doing it Wrong: 10 Problems with Qualitative Data - Farrah Bostic (The Difference Engine)
 
-Market resaerch - you're doing it wrong
+Market research - you're doing it wrong
 
 ** IBM sponsored keynote - Shivakumar Vaithyanathan (IBM)
 
