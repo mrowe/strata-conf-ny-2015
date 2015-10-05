@@ -218,7 +218,7 @@ page view patterns tell you a lot about the story
 
 Addressing volume and velocity:
   - billions of events every few weeks in pipelines
-  - millions of events per second, update the model in milliseconds, reformulate CKE as RT/streaming (kinesis/spark, hadoop/Google BigQueer)
+  - millions of events per second, update the model in milliseconds, reformulate CKE as RT/streaming (kinesis/spark, hadoop/Google BigQuery)
 
 Team growing - data scientist x 6, data engineering x 7 + a few managers (~20 total)
 
