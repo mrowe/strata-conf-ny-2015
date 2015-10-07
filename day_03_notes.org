@@ -154,7 +154,7 @@ Big Data Portal - may open source at some point
 
 Big Data API - "kragle"
 
-Culture: you can point anything you want in production... but you're on the hook for it.
+Culture: you can put anything you want in production... but you're on the hook for it.
 
 Also, periodic clean up.
 
