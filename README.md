@@ -9,8 +9,8 @@ These are my notes from [Strata Conf New York][]. You can start with my heavily 
 Or look at the more detailed raw notes I jotted down while in each session (no representations about spelling, grammar or even remotely making sense are made):
 
 * [Day one notes](day_01_notes.org)
-* [Day two notes](day_01_notes.org)
-* [Day three notes](day_01_notes.org)
+* [Day two notes](day_02_notes.org)
+* [Day three notes](day_03_notes.org)
 
 _Note_ these are in [Org mode][] format, but if you don't happen to use Org mode (why not?) they should be legible as plain text once you see past the lightweight mark up (or view them on GitHub which does a pretty good job of pretending it's markdown).
 
